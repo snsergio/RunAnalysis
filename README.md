@@ -62,7 +62,8 @@ Generating as internal results 3 datasets with the merged  test and train inform
 * x_out
 * y_out
 
-Then the x_out, subject_out and y_out are merged together to create a single dataset
+Then the x_out, subject_out and y_out are merged together to create a single dataset named as "collection"
+
 Inertial signals files are not considered in this initial stage, so the script ends up with the above only.
 
 Perform the required operations on these datasets

@@ -26,26 +26,26 @@ Directory "train" contains the files
 Directory "Inertial Signals" contains the files
 
 test directory                       
-  body_acc_x_test.txt                  
-  body_acc_y_test.txt                  
-  body_acc_z_test.txt                  
-  body_gyro_x_test.txt                
-  body_gyro_y_test.txt                  
-  body_gyro_z_test.txt                  
-  total_acc_x_test.txt               
-  total_acc_y_test.txt                
-  total_acc_z_test.txt                
+* body_acc_x_test.txt                  
+* body_acc_y_test.txt                  
+* body_acc_z_test.txt                  
+* body_gyro_x_test.txt                
+* body_gyro_y_test.txt                  
+* body_gyro_z_test.txt                  
+* total_acc_x_test.txt               
+* total_acc_y_test.txt                
+* total_acc_z_test.txt                
 
 train directory
-  body_acc_x_train.txt
-  body_acc_y_train.txt
-  body_acc_z_train.txt
-  body_gyro_x_train.txt
-  body_gyro_y_train.txt
-  body_gyro_z_train.txt
-  total_acc_x_train.txt
-  total_acc_y_train.txt
-  total_acc_z_train.txt
+* body_acc_x_train.txt
+* body_acc_y_train.txt
+* body_acc_z_train.txt
+* body_gyro_x_train.txt
+* body_gyro_y_train.txt
+* body_gyro_z_train.txt
+* total_acc_x_train.txt
+* total_acc_y_train.txt
+* total_acc_z_train.txt
 
 
 Main script "run_analysis.R" identify the current working directory and set to the correct WD if not already on it.

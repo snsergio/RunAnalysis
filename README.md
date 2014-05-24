@@ -1,5 +1,5 @@
 ## Run_Analysis
-## Run Analysis projetc for "Getting and Cleaning Data" Coursera course
+Run Analysis projetc for "Getting and Cleaning Data" Coursera course
 
 ## Data Source
 All data has been downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
@@ -47,7 +47,7 @@ train directory
 * total_acc_y_train.txt
 * total_acc_z_train.txt
 
-
+## Script Details
 Main script "run_analysis.R" identify the current working directory and set to the correct WD if not already on it.
 This same script reads the .TXT files to merge them. Files used for the project are:
 * "UCI HAR Dataset/test/subject_test.txt"
@@ -57,11 +57,12 @@ This same script reads the .TXT files to merge them. Files used for the project 
 * "UCI HAR Dataset/train/x_train.txt"
 * "UCI HAR Dataset/train/y_train.txt"
 
-Generating as internal results 3 datasets with the merged information:
+Generating as internal results 3 datasets with the merged  test and train information:
 * subject_out
 * x_out
 * y_out
 
+Then the x_out, subject_out and y_out are merged together to create a single dataset
 Inertial signals files are not considered in this initial stage, so the script ends up with the above only.
 
 Perform the required operations on these datasets

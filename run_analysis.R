@@ -1,9 +1,9 @@
 run_analysis <- function() {
   ## define the working directory
-  defaultwd <- "/Users/Sergio/Documents/Coursera/Getting and Cleaning Data/WD"
+  defaultwd <- "/Users/Sergio/Documents/Coursera/Repos/RunAnalysis"
   
   ## check if current directory is the working directory
-  if (getwd() != "/Users/Sergio/Documents/Coursera/Getting and Cleaning Data/WD") {
+  if (getwd() != "/Users/Sergio/Documents/Coursera/Repos/RunAnalysis") {
     setwd(defaultwd)
   }
   

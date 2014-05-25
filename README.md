@@ -68,5 +68,8 @@ Inertial signals files are not considered in this initial stage, so the script e
 
 Perform the required operations on these datasets: Create a file with "mean" and "standard deviation" values only, output file is at Working Directory with name "TidyDataOut.txt"
 
+The second output file requested with the mean on each variable separated by "activity" is also in the working directory and the file name is "TidyMeanOut.txt"
+
+
 
 

@@ -9,17 +9,17 @@ run_analysis <- function() {
   
   ## Project's directory into WD is "UCI HAR Dataset"
   ## changing directory to "UCI HAR Dataset"
-  setwd(paste(defaultwd, "UCI HAR Dataset", sep = ""))
+  setwd(paste(defaultwd, "UCI HAR Dataset", sep = "/"))
   
   ## Into Project's "UCI HAR Dataset" directory are the "test" and "train" directories where files are
   allfiles <- list.files()
   
-  subject_test  <- read.table ("UCI HAR Dataset/test/subject_test.txt",   header = F)
-  x_test        <- read.table ("UCI HAR Dataset/test/x_test.txt",         header = F)
-  y_test        <- read.table ("UCI HAR Dataset/test/y_test.txt",         header = F)
-  subject_train <- read.table ("UCI HAR Dataset/train/subject_train.txt", header = F)
-  x_train       <- read.table ("UCI HAR Dataset/train/x_train.txt",       header = F)
-  y_train       <- read.table ("UCI HAR Dataset/train/y_train.txt",       header = F)
+  subject_test  <- read.table ("./test/subject_test.txt",   header = F)
+  x_test        <- read.table ("./test/x_test.txt",         header = F)
+  y_test        <- read.table ("./test/y_test.txt",         header = F)
+  subject_train <- read.table ("./train/subject_train.txt", header = F)
+  x_train       <- read.table ("./train/x_train.txt",       header = F)
+  y_train       <- read.table ("./train/y_train.txt",       header = F)
   
   ## Merging files on same subject
   subject_out <- rbind(subject_test, subject_train)
@@ -28,10 +28,19 @@ run_analysis <- function() {
   
   ## Creating the output dataset
   collection <- cbind(x_out, subject_out, y_out)
-  
   ## Get the dataset header information and editing them
-  collectionnames <- read.table ("UCI HAR Dataset/features.txt", header = F)
-  names(collection) <- collectionnames[, 2] ## Command to include header names to dataframe
-   
-  
+  collectionnames <- read.table ("./features.txt", header = F)
+  ## Include header names to dataframe
+  names(collection) <- collectionnames[, 2] 
+  tidynames <- c()
+  for (i in 1 : ncol(collection)) {
+    vartest <- grepl("mean", names(collection[i]), ignore.case = T)
+    if (as.logical(vartest)) { tidynames <- append(tidynames, names(collection[i])) }
+    vartest <- grepl("std", names(collection[i]), ignore.case = T)
+    if (as.logical(vartest)) { tidynames <- append(tidynames, names(collection[i])) }    
+  }
+  tidyout <- collection[, (names(collection) %in% tidynames)]
+  print(ncol(tidyout))
+  print(nrow(tidyout))
+  head(tidyout, 2)
 }

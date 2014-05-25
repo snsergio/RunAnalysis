@@ -52,4 +52,26 @@ run_analysis <- function() {
     if (tidyout[i, 88] == 6) { tidyout[i, 88] <- c("LAYING") }    
   }
   write.table(tidyout, file = "./TidyDataOut.txt", append = F, quote = F, sep = "\t")
+  
+  ## Creating second dataset
+  actw <- tidyout[tidyout[88] == "WALKING", ]
+  actwu <- tidyout[tidyout[88] == "WALKING_UPSTAIRS", ]
+  actwd <- tidyout[tidyout[88] == "WALKING_DOWNSTAIRS", ]
+  actsit <- tidyout[tidyout[88] == "SITTING", ]
+  actsta <- tidyout[tidyout[88] == "STANDING", ]
+  actl <- tidyout[tidyout[88] == "LAYING", ]
+  
+  tidyout2 <- matrix(nrow = 6, ncol = 88)
+  for (i in 1:(ncol(actw)-1))    { tidyout2[1, i] <- mean(actw[, i])   }
+  for (i in 1:(ncol(actwu)-1))   { tidyout2[2, i] <- mean(actwu[, i])  }
+  for (i in 1:(ncol(actwd)-1))   { tidyout2[3, i] <- mean(actwd[, i])  }
+  for (i in 1:(ncol(actsit)-1))  { tidyout2[4, i] <- mean(actsit[, i]) }
+  for (i in 1:(ncol(actsta)-1)) { tidyout2[5, i] <- mean(actsta[, i]) }
+  for (i in 1:(ncol(actl)-1))    { tidyout2[6, i] <- mean(actl[, i])   }
+  ## tidyout2 <- cbind(tidyout2, c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING"))
+  names(tidyout2) <- paste(names(tidyout))
+  
+  write.table(tidyout2, file = "./TidyMeanOut.txt", append = F, quote = F, sep = "\t")
 }
+
+

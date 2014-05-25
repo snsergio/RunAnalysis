@@ -1,9 +1,9 @@
 run_analysis <- function() {
   ## define the working directory
-  defaultwd <- "/Users/Sergio/Documents/Coursera/Getting and Cleaning Data/WD"
+  defaultwd <- "/Users/Sergio/Documents/Coursera/Repos/GetCleanData"
   
   ## check if current directory is the working directory
-  if (getwd() != "/Users/Sergio/Documents/Coursera/Getting and Cleaning Data/WD") {
+  if (getwd() != "/Users/Sergio/Documents/Coursera/Repos/GetCleanData") {
     setwd(defaultwd)
   }
   
@@ -28,5 +28,10 @@ run_analysis <- function() {
   
   ## Creating the output dataset
   collection <- cbind(x_out, subject_out, y_out)
+  
+  ## Get the dataset header information and editing them
+  collectionnames <- read.table ("UCI HAR Dataset/features.txt", header = F)
+  names(collection) <- collectionnames[, 2] ## Command to include header names to dataframe
+   
   
 }

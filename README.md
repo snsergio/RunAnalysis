@@ -66,6 +66,7 @@ Then the x_out, subject_out and y_out are merged together to create a single dat
 
 Inertial signals files are not considered in this initial stage, so the script ends up with the above only.
 
-Perform the required operations on these datasets
+Perform the required operations on these datasets: Create a file with "mean" and "standard deviation" values only, output file is at Working Directory with name "TidyDataOut.txt"
+
 
 

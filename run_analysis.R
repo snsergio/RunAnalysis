@@ -26,20 +26,31 @@ run_analysis <- function() {
   x_out       <- rbind(x_test, x_train)
   y_out       <- rbind(y_test, y_train)
   
-  ## Creating the output dataset
-  collection <- cbind(x_out, subject_out, y_out)
-  ## Get the dataset header information and editing them
-  collectionnames <- read.table ("./features.txt", header = F)
+  ## Get the x dataset header information
+  x_out_names <- read.table ("./features.txt", header = F)
   ## Include header names to dataframe
-  names(collection) <- collectionnames[, 2] 
+  names(x_out) <- x_out_names[, 2] 
   tidynames <- c()
-  for (i in 1 : ncol(collection)) {
-    vartest <- grepl("mean", names(collection[i]), ignore.case = T)
-    if (as.logical(vartest)) { tidynames <- append(tidynames, names(collection[i])) }
-    vartest <- grepl("std", names(collection[i]), ignore.case = T)
-    if (as.logical(vartest)) { tidynames <- append(tidynames, names(collection[i])) }    
+  for (i in 1 : ncol(x_out)) {
+    vartest <- grepl("mean", names(x_out[i]), ignore.case = T)
+    if (vartest) { tidynames <- append(tidynames, names(x_out[i])) }
+    vartest <- grepl("std", names(x_out[i]), ignore.case = T)
+    if (vartest) { tidynames <- append(tidynames, names(x_out[i])) }    
   }
-  tidyout <- collection[, (names(collection) %in% tidynames)]
+  tidyout <- x_out[, (names(x_out) %in% tidynames)]
+  
+  ## Creating the output dataset
+  tidyout <- cbind(tidyout, subject_out, y_out)
+  names(tidyout)[87] <- paste("subject")
+  names(tidyout)[88] <- paste("activity")
+  for (i in 1:nrow(tidyout)) {
+    if (tidyout[i, 88] == 1) { tidyout[i, 88] <- c("WALKING") }
+    if (tidyout[i, 88] == 2) { tidyout[i, 88] <- c("WALKING_UPSTAIRS") }
+    if (tidyout[i, 88] == 3) { tidyout[i, 88] <- c("WALKING_DOWNSTAIRS") }
+    if (tidyout[i, 88] == 4) { tidyout[i, 88] <- c("SITTING") }
+    if (tidyout[i, 88] == 5) { tidyout[i, 88] <- c("STANDING") }
+    if (tidyout[i, 88] == 6) { tidyout[i, 88] <- c("LAYING") }    
+  }
   print(ncol(tidyout))
   print(nrow(tidyout))
   head(tidyout, 2)

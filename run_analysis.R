@@ -51,7 +51,5 @@ run_analysis <- function() {
     if (tidyout[i, 88] == 5) { tidyout[i, 88] <- c("STANDING") }
     if (tidyout[i, 88] == 6) { tidyout[i, 88] <- c("LAYING") }    
   }
-  print(ncol(tidyout))
-  print(nrow(tidyout))
-  head(tidyout, 2)
+  write.table(tidyout, file = "./TidyDataOut.txt", append = F, quote = F, sep = "\t")
 }
